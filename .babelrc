@@ -1,0 +1,3 @@
+{
+  "plugins": ["operator", "@babel/plugin-proposal-class-properties"]
+}
