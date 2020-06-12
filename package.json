@@ -32,6 +32,7 @@
     "prettier": "2.0.5"
   },
   "dependencies": {
-    "babel-plugin-operator": "0.1.1"
+    "babel-plugin-operator": "0.1.1",
+    "mathjs": "^7.0.1"
   }
 }
