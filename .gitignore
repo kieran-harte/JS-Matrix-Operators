@@ -112,5 +112,7 @@ dist
 !node_modules/prettier
 !node_modules/prettier/*
 
-!node_modules/babel-eslint
-!node_modules/babel-eslint/*
+!node_modules/@babel/
+node_modules/@babel/*
+!node_modules/@babel/parser
+!node_modules/@babel/parser/*
