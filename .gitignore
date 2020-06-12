@@ -106,9 +106,6 @@ dist
 # Keep track of changes to modules
 !node_modules/babel-plugin-operator
 
-!node_modules/acorn
-!node_modules/acorn/*
-
 !node_modules/prettier
 !node_modules/prettier/*
 
