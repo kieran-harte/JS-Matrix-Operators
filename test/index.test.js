@@ -36,6 +36,14 @@ test('should add two matrices', () => {
   expect((a + b).val).toEqual([[11, 7, 11]])
 })
 
+// Subtract
+test('should subtract two matrices', () => {
+  const a = new Matrix([[4, 6, 9]])
+  const b = new Matrix([[7, 1, 2]])
+
+  expect((a - b).val).toEqual([[-3, 5, 7]])
+})
+
 // Transpose
 test('should traspose a single row matrix', () => {
   const a = new Matrix([[3, 4, 5]])
@@ -153,21 +161,21 @@ test('should multiply before subtract', () => {
 
 // multiply, divide and hadamard in order
 test('multiply, divide, hadamard in order', () => {
-  const a = [[9, 5, 1]]
-  const b = [[1, 2, 3]]
-  const c = [
+  const a = new Matrix([[9, 5, 1]])
+  const b = new Matrix([[1, 2, 3]])
+  const c = new Matrix([
     [5, 3, 8],
     [8, 2, 7]
-  ]
-  const d = [[2, 10]]
+  ])
+  const d = new Matrix([[2, 10]])
   expect((a - b * c.T .* d).val).toEqual([[66, 560]])
 })
 // add and subtract in order
 test('add and subtract in order', () => {
-  const a = [[9, 5, 1]]
-  const b = [[1, 2, 3]]
-  const c = [[6, -2, 8]]
-  const d = [[3, 4, 7]]
+  const a = new Matrix([[9, 5, 1]])
+  const b = new Matrix([[1, 2, 3]])
+  const c = new Matrix([[6, -2, 8]])
+  const d = new Matrix([[3, 4, 7]])
 
   expect((a + b - c + d).val).toEqual([[7, 13, 3]])
 })
