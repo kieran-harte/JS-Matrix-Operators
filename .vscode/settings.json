@@ -8,12 +8,12 @@
     "typescriptreact"
   ],
   "eslint.format.enable": true,
-  "search.exclude": {
-    "**/node_modules": false,
-    "**/bower_components": false,
-    "**/*.code-search": false
-  },
-  "search.useIgnoreFiles": false,
+  // "search.exclude": {
+  //   "**/node_modules": false,
+  //   "**/bower_components": false,
+  //   "**/*.code-search": false
+  // },
+  // "search.useIgnoreFiles": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.organizeImports": true

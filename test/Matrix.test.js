@@ -1,6 +1,6 @@
 'bpo enable'
 
-const Matrix = require('../src/index')
+const Matrix = require('../src/Matrix')
 
 // Hadamard product
 test('should calculate hadamard product of two matrices', () => {
@@ -34,6 +34,14 @@ test('should add two matrices', () => {
   const b = new Matrix([[7, 1, 2]])
 
   expect((a + b).val).toEqual([[11, 7, 11]])
+})
+
+// Subtract
+test('should subtract two matrices', () => {
+  const a = new Matrix([[4, 6, 9]])
+  const b = new Matrix([[7, 1, 2]])
+
+  expect((a - b).val).toEqual([[-3, 5, 7]])
 })
 
 // Transpose
@@ -151,23 +159,53 @@ test('should multiply before subtract', () => {
   ])
 })
 
-// multiply, divide and hadamard in order
+// do multiply, divide and hadamard in order they appear
 test('multiply, divide, hadamard in order', () => {
-  const a = [[9, 5, 1]]
-  const b = [[1, 2, 3]]
-  const c = [
+  const a = new Matrix([[9, 6, 12]])
+  const b = new Matrix([[1, 2, 3]])
+  const c = new Matrix([
     [5, 3, 8],
     [8, 2, 7]
-  ]
-  const d = [[2, 10]]
-  expect((a - b * c.T .* d).val).toEqual([[66, 560]])
+  ])
+  const d = new Matrix([[2, 10]])
+  // TODO prettier gets rid of brackets https://github.com/prettier/prettier/issues/187
+  // prettier-ignore
+  expect(((a / b * c.T) .* d ).val).toEqual([[172, 1060]])
 })
 // add and subtract in order
 test('add and subtract in order', () => {
-  const a = [[9, 5, 1]]
-  const b = [[1, 2, 3]]
-  const c = [[6, -2, 8]]
-  const d = [[3, 4, 7]]
+  const a = new Matrix([[9, 5, 1]])
+  const b = new Matrix([[1, 2, 3]])
+  const c = new Matrix([[6, -2, 8]])
+  const d = new Matrix([[3, 4, 7]])
 
   expect((a + b - c + d).val).toEqual([[7, 13, 3]])
+})
+
+test('multiply, hadamard order', () => {
+  const a = new Matrix([
+    [1, 2],
+    [3, 4]
+  ])
+  const b = new Matrix([
+    [2, 3],
+    [1, 4]
+  ])
+  const c = new Matrix([
+    [2, 3],
+    [1, 0]
+  ])
+  // TODO should hadamard take precedence like this?
+  // prettier-ignore
+  expect((a * b .* c).val).toEqual((a * (b .* c)).val)
+})
+
+// Random matrix
+test('generate random matrix', () => {
+  const a = Matrix.random(3, 2, -1, 1)
+
+  expect(a.val.length).toBe(3)
+  expect(a.val[0].length).toBe(2)
+  expect(a.val[0][0]).toBeLessThan(1)
+  expect(a.val[0][0]).toBeGreaterThanOrEqual(-1)
 })
