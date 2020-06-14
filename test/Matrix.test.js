@@ -1,6 +1,6 @@
 'bpo enable'
 
-const Matrix = require('../src/index')
+const Matrix = require('../src/Matrix')
 
 // Hadamard product
 test('should calculate hadamard product of two matrices', () => {
