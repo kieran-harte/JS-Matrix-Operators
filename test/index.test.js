@@ -199,3 +199,13 @@ test('multiply, hadamard order', () => {
   // prettier-ignore
   expect((a * b .* c).val).toEqual((a * (b .* c)).val)
 })
+
+// Random matrix
+test('generate random matrix', () => {
+  const a = Matrix.random(3, 2, -1, 1)
+
+  expect(a.val.length).toBe(3)
+  expect(a.val[0].length).toBe(2)
+  expect(a.val[0][0]).toBeLessThan(1)
+  expect(a.val[0][0]).toBeGreaterThanOrEqual(-1)
+})

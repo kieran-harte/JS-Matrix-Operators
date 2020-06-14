@@ -9,6 +9,11 @@ class Matrix {
     this.val = array
   }
 
+  // Matrix with random values
+  static random = (rows, cols, min, max) => {
+    return new Matrix(mathjs.random([rows, cols], min, max))
+  }
+
   // Hadamard product
   static operatorHadamard = (a, b) =>
     new Matrix(mathjs.dotMultiply(a.val, b.val))
