@@ -86,5 +86,4 @@ c.val ===
   ]
 ```
 
-> _Note: Hadamard operator takes precedence over multiplication and division, so for matrices a,b,c
-> a * b .* c === a * (b .* c)_
+> _Note: Hadamard operator takes precedence over multiplication and division, so for matrices a,b,c:_ _`a * b .* c === a * (b .* c)`_
