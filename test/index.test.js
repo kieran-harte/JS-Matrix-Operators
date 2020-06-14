@@ -159,16 +159,18 @@ test('should multiply before subtract', () => {
   ])
 })
 
-// multiply, divide and hadamard in order
+// do multiply, divide and hadamard in order they appear
 test('multiply, divide, hadamard in order', () => {
-  const a = new Matrix([[9, 5, 1]])
+  const a = new Matrix([[9, 6, 12]])
   const b = new Matrix([[1, 2, 3]])
   const c = new Matrix([
     [5, 3, 8],
     [8, 2, 7]
   ])
   const d = new Matrix([[2, 10]])
-  expect((a - b * c.T .* d).val).toEqual([[66, 560]])
+  // TODO prettier gets rid of brackets https://github.com/prettier/prettier/issues/187
+  // prettier-ignore
+  expect(((a / b * c.T) .* d ).val).toEqual([[172, 1060]])
 })
 // add and subtract in order
 test('add and subtract in order', () => {
@@ -178,4 +180,22 @@ test('add and subtract in order', () => {
   const d = new Matrix([[3, 4, 7]])
 
   expect((a + b - c + d).val).toEqual([[7, 13, 3]])
+})
+
+test('multiply, hadamard order', () => {
+  const a = new Matrix([
+    [1, 2],
+    [3, 4]
+  ])
+  const b = new Matrix([
+    [2, 3],
+    [1, 4]
+  ])
+  const c = new Matrix([
+    [2, 3],
+    [1, 0]
+  ])
+  // TODO should hadamard take precedence like this?
+  // prettier-ignore
+  expect((a * b .* c).val).toEqual((a * (b .* c)).val)
 })

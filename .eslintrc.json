@@ -16,6 +16,7 @@
     "prettier/prettier": "error",
     "no-unused-vars": "warn",
     "func-names": "off",
-    "no-empty-function": "error"
+    "no-empty-function": "error",
+    "no-extra-parens": "warn"
   }
 }
